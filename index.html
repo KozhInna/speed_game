@@ -4,48 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Familjen+Grotesk:wght@400;500;600;700&family=Tourney:wght@700&display=swap"
+      rel="stylesheet"
+    />
     <title>Game</title>
   </head>
   <body>
     <div class="container">
       <h1>Speedgame</h1>
-      <p>Score: 0</p>
+      <p>Score: <span class="score">0</span></p>
       <div class="box-for-rounds">
-        <div class="round round1">
-          <label for="red"></label>
-          <input type="radio" id="red" name="round" value="red" class="duck" />
-        </div>
-        <div class="round round2">
-          <label for="blue"></label>
-          <input
-            type="radio"
-            id="blue"
-            name="round"
-            value="blue"
-            class="duck"
-          />
-        </div>
-        <div class="round round3">
-          <label for="green"></label>
-          <input
-            type="radio"
-            id="green"
-            name="round"
-            value="green"
-            class="duck"
-          />
-        </div>
-        <div class="round round4">
-          <label for="yellow"></label>
-          <input
-            type="radio"
-            id="yellow"
-            name="yellow"
-            value="yellow"
-            class="duck"
-          />
-        </div>
+        <div class="round round1">1</div>
+        <div class="round round2">2</div>
+        <div class="round round3">3</div>
+        <div class="round round4">4</div>
       </div>
+      <button id="startButton">Start game</button>
+      <button id="endButton">End game</button>
     </div>
+    <script src="main.js"></script>
   </body>
 </html>

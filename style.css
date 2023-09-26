@@ -6,7 +6,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
+body {
   background-image: linear-gradient(
     to bottom right,
     rgb(124, 221, 124),
@@ -14,39 +14,48 @@ html {
   );
   background-attachment: fixed;
   background-repeat: no-repeat;
+  font-family: "Tourney", cursive;
+  text-align: center;
+}
+h1 {
+  font-size: 4rem;
+}
+.box-for-rounds {
+  
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .round {
-  /* display: inline-block; */
-  border: 1px solid black;
-  padding: 100px;
+  width: 75px;
+  height: 75px;
+  background-color: aqua;
   border-radius: 50%;
-}
-.round1 {
-  background-color: red;
-}
-.round2 {
-  background-color: blue;
-}
-.round3 {
-  background-color: green;
-}
-.round4 {
-  background-color: yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+  /* to prevent clicking, before game starts */
+  pointer-events: none;
 }
 .container {
-  width: 100%;
-  height: 100vh;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 100px;
+ 
 }
-.box-for-rounds {
-  min-width: 70%;
-  display: flex;
-  justify-content: space-around;
+
+
+button {
+  font-family: inherit;
+  display: block;
+  padding: 10px 20px;
 }
-.duck {
-  display: none;
+.round.active {
+  background-color: orangered;
+  background-image: url(https://easydrawingart.com/wp-content/uploads/2019/08/How-to-Draw-a-Mosquito.jpg.webp);
+  background-size: cover;
+  vac
 }
