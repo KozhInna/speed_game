@@ -7,55 +7,105 @@
 }
 
 body {
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(124, 221, 124),
-    rgb(208, 124, 138)
-  );
-  background-attachment: fixed;
-  background-repeat: no-repeat;
+  background: url(img/background.jpg) no-repeat center center fixed;
+  background-size: cover;
   font-family: "Tourney", cursive;
   text-align: center;
+  height: 100%;
+  position: relative;
+
+  color: azure;
 }
 h1 {
   font-size: 4rem;
 }
-.box-for-rounds {
-  
+.circles-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 30px;
 }
-.round {
-  width: 75px;
-  height: 75px;
-  background-color: aqua;
+.circle {
+  width: 120px;
+  height: 120px;
+  /* background-color: aqua; */
   border-radius: 50%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 1rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  border-bottom: 1.5px solid white;
+  box-shadow: 5px 9.9px 9.9px hsl(0deg 0% 0% / 0.35);
+
+  /* margin: 1rem; */
   /* to prevent clicking, before game starts */
   pointer-events: none;
 }
 .container {
-  
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
- 
+  height: 100vh;
+  gap: 20px;
 }
-
 
 button {
   font-family: inherit;
-  display: block;
+
   padding: 10px 20px;
 }
-.round.active {
-  background-color: orangered;
-  background-image: url(https://easydrawingart.com/wp-content/uploads/2019/08/How-to-Draw-a-Mosquito.jpg.webp);
-  background-size: cover;
-  vac
+.circle.active {
+  /*   <iframe src="https://giphy.com/embed/l41m6Zgek82ObOUfu" width="480" height="384" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/ducks-carnival-duck-hunt-l41m6Zgek82ObOUfu">via GIPHY</a></p>
+ */
+  /* background-color: orangered; */
+  background-image: url(img/mosc--0.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+/* layout at the end */
+.overlay-endGame {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(19, 60, 41);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* display: none; */
+}
+.modal-endGame {
+  max-width: 70%;
+  min-height: 300px;
+  background-color: rgb(121, 73, 7, 0.8);
+  line-height: 1.5;
+}
+
+.hidden {
+  display: none;
+}
+/* layout between games */
+.overlay-btwRounds {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-btwRounds {
+  min-width: 30%;
+  min-height: 100px;
+  background-color: white;
+  color: black;
+  line-height: 1.5;
+  padding: 10px 20px;
+}
+.overlay-btwRounds.hidden {
+  display: none;
 }

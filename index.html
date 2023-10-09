@@ -12,16 +12,40 @@
   </head>
   <body>
     <div class="container">
-      <h1>Speedgame</h1>
+      <h1>Hit Mosquito</h1>
       <p>Score: <span class="score">0</span></p>
-      <div class="box-for-rounds">
-        <div class="round round1">1</div>
-        <div class="round round2">2</div>
-        <div class="round round3">3</div>
-        <div class="round round4">4</div>
+      <p>Round: <span class="round-main">3</span> of 3</p>
+
+      <div class="circles-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
       </div>
-      <button id="startButton">Start game</button>
-      <button id="endButton">End game</button>
+      <div class="overlay-btwRounds hidden">
+        <div class="modal-btwRounds">
+          <h3>You missed one of US 🦟.</h3>
+          <p>It's your <span class="round-between">1</span> of 3</p>
+          <p>Your best score: <span class="best-score">3</span></p>
+          <button class="button" id="backBtn">Back to game</button>
+        </div>
+      </div>
+
+      <button class="button" id="startBtn">Start game</button>
+
+      <button class="hidden button" id="endBtn">End game</button>
+
+      <div class="overlay-endGame hidden">
+        <div class="modal-endGame">
+          <h1>heading</h1>
+          <p class="game-result-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut,
+            voluptatibus? Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Aut, voluptatibus? Lorem ipsum dolor sit amet consectetur
+            adipisicing elit. Aut, voluptatibus?
+          </p>
+        </div>
+      </div>
     </div>
     <script src="main.js"></script>
   </body>
