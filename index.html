@@ -14,8 +14,21 @@
     <div class="container">
       <h1>Hit Mosquito</h1>
       <p>Score: <span class="score">0</span></p>
-      <p>Round: <span class="round-main">3</span> of 3</p>
+      <div class="lives-el">
+        <img
+          src="/img/hearts--3.png"
+          class="lives"
+          alt="actual number of lives"
+        />
+      </div>
 
+      <div class="health-el">
+        <img
+          src="/img/health--0.png"
+          class="health"
+          alt="actual level of health"
+        />
+      </div>
       <div class="circles-container">
         <div class="circle"></div>
         <div class="circle"></div>
@@ -25,7 +38,7 @@
       <div class="overlay-btwRounds hidden">
         <div class="modal-btwRounds">
           <h3>You missed one of US 🦟.</h3>
-          <p>It's your <span class="round-between">1</span> of 3</p>
+          <p>You have <span class="round-between">1</span> left</p>
           <p>Your best score: <span class="best-score">3</span></p>
           <button class="button" id="backBtn">Back to game</button>
         </div>

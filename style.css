@@ -62,6 +62,15 @@ button {
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
+.circle.killed {
+  /*   <iframe src="https://giphy.com/embed/l41m6Zgek82ObOUfu" width="480" height="384" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/ducks-carnival-duck-hunt-l41m6Zgek82ObOUfu">via GIPHY</a></p>
+ */
+  /* background-color: orangered; */
+  background-image: url(img/prohibited.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
 /* layout at the end */
 .overlay-endGame {
   width: 100vw;
@@ -108,4 +117,22 @@ button {
 }
 .overlay-btwRounds.hidden {
   display: none;
+}
+.lives {
+  height: 2rem;
+}
+.lives-el {
+  background: white;
+  padding: 5px 10px 0;
+  border-radius: 25px;
+  box-shadow: 1px 5px 10px #777676;
+}
+.health {
+  height: 1.5rem;
+}
+.health-el {
+  background: rgb(245, 245, 245);
+  padding: 10px 10px 5px;
+  border-radius: 25px;
+  box-shadow: 1px 5px 10px #777676;
 }

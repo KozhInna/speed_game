@@ -10,49 +10,82 @@ const overlayBtw = document.querySelector(".overlay-btwRounds");
 const modalBtw = document.querySelector(".modal-btwRounds");
 
 const score = document.querySelector(".score");
-const roundMain = document.querySelector(".round-main");
+/* const roundMain = document.querySelector(".round-main"); */
 const roundBetween = document.querySelector(".round-between");
 const resultText = document.querySelector(".game-result-text");
 const bestScore = document.querySelector(".best-score");
+const livesImg = document.querySelector(".lives");
+const healthImg = document.querySelector(".health");
 
 let scoreValue = 0;
 let timer;
 let pace = 1500;
 let active = 0;
-let moves = 0;
-let rounds = 3;
+
 let playing = true;
 let highestScore = 0;
+
+let hits = 0;
+
+let lives = 3;
+let timer2;
+
+/* let clicked = false; */
 /* function to generate a random num */
 const getRandomNum = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 /* console.log(getRandomNum(0, 3)); */
 
 const stopGame = () => {
-  if (rounds !== 0) {
+  /* clearTimeout(timer2); */
+
+  if (lives !== 0) {
     playing = false;
     overlayBtw.classList.toggle("hidden");
-    roundBetween.textContent = rounds;
+    lives > 1
+      ? (roundBetween.textContent = `${lives} lives`)
+      : (roundBetween.textContent = `${lives} life`);
     bestScore.textContent = highestScore;
   } else {
     return endGame;
   }
 };
 
+const hitBreak = () => {
+  console.log(`this is hit ${hits}`);
+  healthImg.src = `/img/health--${hits}.png`;
+};
+
+const timerForStop = () => {
+  setTimeout(stopGame, 1000);
+};
+const timerForEnd = () => {
+  setTimeout(endGame, 1000);
+};
+
 const clickCircle = (i) => {
   if (i !== active) {
+    hits++;
     /* return won't let to read the code below this function */
-    rounds--;
-    roundMain.textContent = rounds;
-    return stopGame();
+    if (hits < 3 && lives >= 1) {
+      return hitBreak();
+    } else if (hits === 3 && lives > 1) {
+      healthImg.src = `/img/health--${hits}.png`;
+      lives--;
+      console.log(`this are lives left ${lives}`);
+      return timerForStop();
+    } else if (hits === 3 && lives === 1) {
+      healthImg.src = `/img/health--${hits}.png`;
+      livesImg.src = `/img/hearts--${lives}.png`;
+      return timerForEnd();
+    }
   }
 
-  if (rounds === 0) {
-    return endGame();
-  }
   /*  console.log("circle is clicked", i); */
-  moves--;
+  /* score increases only after a right click */
   scoreValue += 10;
+  console.log(`this is score ${scoreValue}`);
+
   score.textContent = scoreValue;
 
   if (highestScore < scoreValue) {
@@ -70,20 +103,15 @@ const enableCircle = () => {
 };
 const startGame = () => {
   if (playing) {
+    livesImg.src = `/img/hearts--${lives}.png`;
     startBtn.classList.add("hidden");
     endBtn.classList.remove("hidden");
-    enableCircle();
 
-    if (moves >= 3) {
-      console.log(`problem with moves`);
-      return endGame();
-    }
-
-    if (rounds === 0) {
+    if (lives === 0) {
       console.log(`problem with rounds`);
       return endGame();
     }
-
+    enableCircle();
     /* newActive - store the new random num and is the
       result of func pickNewNum with argument 0 initially */
     const newActive = pickNewNum(active);
@@ -95,7 +123,7 @@ const startGame = () => {
 
     timer = setTimeout(startGame, pace);
     pace -= 10;
-    moves++;
+
     /* console.log(rounds); */
 
     function pickNewNum(active) {
@@ -107,7 +135,6 @@ const startGame = () => {
       return pickNewNum(active);
     }
   }
-
   /* console.log(active); */
 };
 
@@ -137,8 +164,10 @@ const continueGame = () => {
   playing = true;
   score.textContent = 0;
   scoreValue = 0;
-  moves = 0;
   overlayBtw.classList.toggle("hidden");
+  healthImg.src = `/img/health--0.png`;
+
+  hits = 0;
 
   startGame();
 };
