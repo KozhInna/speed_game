@@ -8,36 +8,61 @@
       href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Familjen+Grotesk:wght@400;500;600;700&family=Tourney:wght@700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
     <title>Game</title>
   </head>
   <body>
     <div class="container">
+      <div class="overlay-blood"></div>
       <h1>Hit Mosquito</h1>
-      <p>Score: <span class="score">0</span></p>
-      <div class="lives-el">
-        <img
-          src="/img/hearts--3.png"
-          class="lives"
-          alt="actual number of lives"
-        />
-      </div>
+      <div class="rules-overlay hidden">
+        <h2>Score: <span class="score">0</span></h2>
+        <div class="lives-el">
+          <img
+            src="/img/hearts--3.png"
+            class="lives"
+            alt="actual number of lives"
+          />
+        </div>
 
-      <div class="health-el">
-        <img
-          src="/img/health--0.png"
-          class="health"
-          alt="actual level of health"
-        />
+        <div class="health-el">
+          <img
+            src="/img/health--0.png"
+            class="health"
+            alt="actual level of health"
+          />
+        </div>
+        <div class="speedbox">
+          <p>
+            <span class="speed">1 </span>
+            <img
+              class="mosc-icon"
+              src="/img/icon-mosquito.png"
+              alt="mosquito"
+            />
+            /sec
+          </p>
+        </div>
+        <div class="circles-container">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
       </div>
-      <div class="circles-container">
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-      </div>
-      <div class="overlay-btwRounds hidden">
+      <div class="overlay-btwRounds">
         <div class="modal-btwRounds">
-          <h3>You missed one of US 🦟.</h3>
+          <h3>
+            You missed one of
+            <img
+              class="mosc-icon"
+              src="/img/icon-mosquito.png"
+              alt="mosquito"
+            />
+          </h3>
           <p>You have <span class="round-between">1</span> left</p>
           <p>Your best score: <span class="best-score">3</span></p>
           <button class="button" id="backBtn">Back to game</button>
@@ -48,15 +73,10 @@
 
       <button class="hidden button" id="endBtn">End game</button>
 
-      <div class="overlay-endGame hidden">
+      <div class="overlay-endGame">
         <div class="modal-endGame">
-          <h1>heading</h1>
-          <p class="game-result-text">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut,
-            voluptatibus? Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Aut, voluptatibus? Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Aut, voluptatibus?
-          </p>
+          <h2>heading</h2>
+          <p class="game-result-text">Lorem ipsum</p>
         </div>
       </div>
     </div>

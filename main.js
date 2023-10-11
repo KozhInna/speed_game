@@ -8,6 +8,7 @@ const modalEnd = document.querySelector(".modal-endGame");
 
 const overlayBtw = document.querySelector(".overlay-btwRounds");
 const modalBtw = document.querySelector(".modal-btwRounds");
+const overlayBlood = document.querySelector(".overlay-blood");
 
 const score = document.querySelector(".score");
 /* const roundMain = document.querySelector(".round-main"); */
@@ -16,6 +17,8 @@ const resultText = document.querySelector(".game-result-text");
 const bestScore = document.querySelector(".best-score");
 const livesImg = document.querySelector(".lives");
 const healthImg = document.querySelector(".health");
+const speed = document.querySelector(".speed");
+const rulesOverlay = document.querySelector(".rules-overlay");
 
 let scoreValue = 0;
 let timer;
@@ -26,9 +29,11 @@ let playing = true;
 let highestScore = 0;
 
 let hits = 0;
+let moves = 0;
 
 let lives = 3;
 let timer2;
+let mosquito = 0;
 
 /* let clicked = false; */
 /* function to generate a random num */
@@ -37,11 +42,9 @@ const getRandomNum = (min, max) =>
 /* console.log(getRandomNum(0, 3)); */
 
 const stopGame = () => {
-  /* clearTimeout(timer2); */
-
   if (lives !== 0) {
     playing = false;
-    overlayBtw.classList.toggle("hidden");
+    overlayBtw.classList.toggle("visible");
     lives > 1
       ? (roundBetween.textContent = `${lives} lives`)
       : (roundBetween.textContent = `${lives} life`);
@@ -51,9 +54,18 @@ const stopGame = () => {
   }
 };
 
+function openOverlayBlood() {
+  overlayBlood.classList.add("open");
+  playing = false;
+  setTimeout(() => {
+    overlayBlood.classList.remove("open");
+  }, 500);
+}
+
 const hitBreak = () => {
   console.log(`this is hit ${hits}`);
   healthImg.src = `/img/health--${hits}.png`;
+  playing = true;
 };
 
 const timerForStop = () => {
@@ -66,8 +78,9 @@ const timerForEnd = () => {
 const clickCircle = (i) => {
   if (i !== active) {
     hits++;
-    /* return won't let to read the code below this function */
+    moves--;
     if (hits < 3 && lives >= 1) {
+      openOverlayBlood();
       return hitBreak();
     } else if (hits === 3 && lives > 1) {
       healthImg.src = `/img/health--${hits}.png`;
@@ -80,10 +93,12 @@ const clickCircle = (i) => {
       return timerForEnd();
     }
   }
+  circles[active].classList.add("killed");
 
   /*  console.log("circle is clicked", i); */
   /* score increases only after a right click */
   scoreValue += 10;
+  moves--;
   console.log(`this is score ${scoreValue}`);
 
   score.textContent = scoreValue;
@@ -103,6 +118,11 @@ const enableCircle = () => {
 };
 const startGame = () => {
   if (playing) {
+    rulesOverlay.classList.remove("hidden");
+    if (moves >= 3) {
+      return endGame();
+    }
+
     livesImg.src = `/img/hearts--${lives}.png`;
     startBtn.classList.add("hidden");
     endBtn.classList.remove("hidden");
@@ -116,13 +136,17 @@ const startGame = () => {
       result of func pickNewNum with argument 0 initially */
     const newActive = pickNewNum(active);
 
-    circles[newActive].classList.toggle("active");
+    circles[newActive].classList.add("active");
+    circles[active].classList.remove("killed");
     circles[active].classList.remove("active");
 
     active = newActive;
 
     timer = setTimeout(startGame, pace);
     pace -= 10;
+    mosquito++;
+    speed.textContent = mosquito;
+    moves++;
 
     /* console.log(rounds); */
 
@@ -140,12 +164,16 @@ const startGame = () => {
 
 const endGame = () => {
   if (playing) {
-    if (scoreValue >= 20) {
-      resultText.textContent = `Your score is ${scoreValue}. Good result!`;
-    } else {
-      `Try again. Your score is ${scoreValue}.`;
+    if (highestScore > 100) {
+      resultText.textContent = `You are a professional! Your best score is ${highestScore}. Now`;
+    } else if (highestScore > 50 && highestScore < 100) {
+      resultText.textContent = `Your best score is ${highestScore}. Good result!`;
+    } else if (highestScore > 10 && highestScore < 50) {
+      resultText.textContent = `Try again. Your score is ${highestScore}.`;
+    } else if (scoreValue === 0) {
+      resultText.textContent = `Try again. Your score is ${highestScore}.`;
     }
-    overlayEnd.classList.toggle("hidden");
+    overlayEnd.classList.toggle("visible");
     overlayEnd.addEventListener("click", resetGame);
 
     clearTimeout(timer);
@@ -157,14 +185,14 @@ const resetGame = () => {
   window.location.reload();
 };
 const openModal = () => {
-  overlayEnd.classList.add(".hidden");
-  modalEnd.classList.remove(".hidden");
+  overlayEnd.classList.add("visible");
+  modalEnd.classList.remove("visible");
 };
 const continueGame = () => {
   playing = true;
   score.textContent = 0;
   scoreValue = 0;
-  overlayBtw.classList.toggle("hidden");
+  overlayBtw.classList.toggle("visible");
   healthImg.src = `/img/health--0.png`;
 
   hits = 0;

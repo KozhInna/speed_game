@@ -15,6 +15,7 @@ body {
   position: relative;
 
   color: azure;
+  font-size: 1.2rem;
 }
 h1 {
   font-size: 4rem;
@@ -40,6 +41,9 @@ h1 {
   /* to prevent clicking, before game starts */
   pointer-events: none;
 }
+.circle:hover {
+  cursor: grab;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -55,19 +59,15 @@ button {
   padding: 10px 20px;
 }
 .circle.active {
-  /*   <iframe src="https://giphy.com/embed/l41m6Zgek82ObOUfu" width="480" height="384" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/ducks-carnival-duck-hunt-l41m6Zgek82ObOUfu">via GIPHY</a></p>
- */
-  /* background-color: orangered; */
   background-image: url(img/mosc--0.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 .circle.killed {
-  /*   <iframe src="https://giphy.com/embed/l41m6Zgek82ObOUfu" width="480" height="384" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/ducks-carnival-duck-hunt-l41m6Zgek82ObOUfu">via GIPHY</a></p>
+  background-image: url(img/prohibited.png);
+  background-color: rgba(255, 255, 255, 0.804);
+  /*   background-repeat: no-repeat;
  */
-  /* background-color: orangered; */
-  background-image: url(img/prohibited.jpg);
-  background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 
@@ -79,12 +79,33 @@ button {
   position: fixed;
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
-
-  /* display: none; */
 }
+.overlay-endGame.visible {
+  display: flex;
+}
+.overlay-blood {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(/img/blood-splatter.png);
+  background-color: rgb(209, 15, 15, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+.overlay-blood.open {
+  display: block;
+}
+.rules-overlay {
+  width: 100vw;
+  min-height: 50%;
+
+  /* backdrop-filter: blur(50px); */
+}
+
 .modal-endGame {
   max-width: 70%;
   min-height: 300px;
@@ -103,7 +124,7 @@ button {
   top: 0;
   left: 0;
   backdrop-filter: blur(10px);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
 }
@@ -115,24 +136,33 @@ button {
   line-height: 1.5;
   padding: 10px 20px;
 }
-.overlay-btwRounds.hidden {
-  display: none;
+.overlay-btwRounds.visible {
+  display: flex;
 }
 .lives {
-  height: 2rem;
+  width: 100%;
 }
 .lives-el {
+  width: 7rem;
   background: white;
-  padding: 5px 10px 0;
+  padding: 12px 10px 0;
   border-radius: 25px;
   box-shadow: 1px 5px 10px #777676;
 }
 .health {
-  height: 1.5rem;
+  width: 100%;
 }
 .health-el {
-  background: rgb(245, 245, 245);
-  padding: 10px 10px 5px;
+  width: 7rem;
+  background: rgb(255, 255, 255);
+  padding: 12px 10px 0;
   border-radius: 25px;
   box-shadow: 1px 5px 10px #777676;
+}
+.mosc-icon {
+  height: 1.5rem;
+}
+
+.speed {
+  font-size: 2rem;
 }
