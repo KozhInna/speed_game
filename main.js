@@ -19,6 +19,12 @@ const livesImg = document.querySelector(".lives");
 const healthImg = document.querySelector(".health");
 const speed = document.querySelector(".speed");
 const rulesOverlay = document.querySelector(".rules-overlay");
+let slapSound = new Audio("sound/slap.wav");
+slapSound.volume = 0.9;
+let noLuckSound = new Audio("sound/failureDrum.mp3");
+slapSound.volume = 0.1;
+let biteSound = new Audio("sound/bite.mp3");
+slapSound.volume = 0.1;
 
 let scoreValue = 0;
 let timer;
@@ -77,12 +83,14 @@ const timerForEnd = () => {
 
 const clickCircle = (i) => {
   if (i !== active) {
+    biteSound.play();
     hits++;
     moves--;
     if (hits < 3 && lives >= 1) {
       openOverlayBlood();
       return hitBreak();
     } else if (hits === 3 && lives > 1) {
+      openOverlayBlood();
       healthImg.src = `/img/health--${hits}.png`;
       lives--;
       console.log(`this are lives left ${lives}`);
@@ -106,6 +114,7 @@ const clickCircle = (i) => {
   if (highestScore < scoreValue) {
     highestScore = scoreValue;
   }
+  slapSound.play();
 };
 /* i is an index for NodeList */
 circles.forEach((circle, i) => {
@@ -175,6 +184,7 @@ const endGame = () => {
     }
     overlayEnd.classList.toggle("visible");
     overlayEnd.addEventListener("click", resetGame);
+    noLuckSound.play();
 
     clearTimeout(timer);
     /* round.textContent = 3; */

@@ -19,12 +19,15 @@ body {
 }
 h1 {
   font-size: 4rem;
+  margin-bottom: 30px;
 }
 .circles-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
+  grid-column: 2 / span 2;
+  grid-row: 2 / 3;
 }
 .circle {
   width: 120px;
@@ -102,8 +105,10 @@ button {
 .rules-overlay {
   width: 100vw;
   min-height: 50%;
-
-  /* backdrop-filter: blur(50px); */
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
 }
 
 .modal-endGame {
@@ -140,22 +145,31 @@ button {
   display: flex;
 }
 .lives {
-  width: 100%;
+  width: 90px;
 }
 .lives-el {
   width: 7rem;
+  height: 2rem;
   background: white;
-  padding: 12px 10px 0;
+
   border-radius: 25px;
   box-shadow: 1px 5px 10px #777676;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: end;
 }
 .health {
-  width: 100%;
+  width: 100px;
 }
 .health-el {
   width: 7rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: rgb(255, 255, 255);
-  padding: 12px 10px 0;
+
   border-radius: 25px;
   box-shadow: 1px 5px 10px #777676;
 }
@@ -165,4 +179,7 @@ button {
 
 .speed {
   font-size: 2rem;
+}
+.score-el {
+  justify-self: end;
 }
