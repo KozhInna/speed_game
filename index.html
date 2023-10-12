@@ -12,13 +12,74 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
     <title>Game</title>
   </head>
   <body>
     <div class="container">
       <div class="overlay-blood"></div>
       <h1>Hit Mosquito</h1>
-      <div class="rules-overlay">
+      <div class="overlay-rules">
+        <div class="rules-modal">
+          <button id="close">
+            <span class="material-symbols-outlined"> close </span>
+          </button>
+          <h1>Hit Mosquito</h1>
+
+          <h2>Make your sleep peaceful and quiet.</h2>
+          <h2>Protect territory</h2>
+          <div class="img-prohibited">
+            <img class="mosc-prohibited" src="img/prohibited.jpg" />
+          </div>
+          <p>
+            Use your hand to slap
+            <img
+              class="mosc-icon"
+              src="/img/icon-mosquito.png"
+              alt="mosquito"
+            />
+            <img
+              class="mosc-icon"
+              src="/img/icon-mosquito.png"
+              alt="mosquito"
+            />
+            <img
+              class="mosc-icon"
+              src="/img/icon-mosquito.png"
+              alt="mosquito"
+            />
+          </p>
+          <p>
+            The more
+            <img
+              class="mosc-icon"
+              src="/img/icon-mosquito.png"
+              alt="mosquito"
+            />
+            are slapped the more
+            <img
+              class="mosc-icon"
+              src="/img/icon-mosquito.png"
+              alt="mosquito"
+            />
+            come. Check their speed.
+          </p>
+          <p>
+            If you miss to hit
+            <img
+              class="mosc-icon"
+              src="/img/icon-mosquito.png"
+              alt="mosquito"
+            />, it bites you 🩸
+          </p>
+          <p>3 bites you lose a life ♥️</p>
+          <h2>Want to sleep well 💤 - deserve it!</h2>
+        </div>
+      </div>
+      <div class="overlay-main">
         <!-- hidden -->
 
         <div class="lives-el">
@@ -39,7 +100,7 @@
         <h2 class="score-el">Score: <span class="score">0</span></h2>
         <div class="speedbox">
           <p>
-            <span class="speed">1 </span>
+            <span class="speed">0 </span>
             <img
               class="mosc-icon"
               src="/img/icon-mosquito.png"
@@ -54,6 +115,14 @@
           <div class="circle"></div>
           <div class="circle"></div>
         </div>
+        <div class="sound-el">
+          <button id="sound-off">
+            <span class="material-symbols-outlined"> volume_off </span>
+          </button>
+          <button id="sound-on">
+            <span class="material-symbols-outlined"> volume_up </span>
+          </button>
+        </div>
       </div>
       <div class="overlay-btwRounds">
         <div class="modal-btwRounds">
@@ -65,8 +134,8 @@
               alt="mosquito"
             />
           </h3>
-          <p>You have <span class="round-between">1</span> left</p>
-          <p>Your best score: <span class="best-score">3</span></p>
+          <p><span class="round-between">1</span> left</p>
+          <p>Best score: <span class="best-score">3</span></p>
           <button class="button" id="backBtn">Back to game</button>
         </div>
       </div>
@@ -77,7 +146,6 @@
 
       <div class="overlay-endGame">
         <div class="modal-endGame">
-          <h2>heading</h2>
           <p class="game-result-text"></p>
         </div>
       </div>

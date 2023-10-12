@@ -14,7 +14,7 @@ body {
   height: 100%;
   position: relative;
 
-  color: azure;
+  color: white;
   font-size: 1.2rem;
 }
 h1 {
@@ -57,9 +57,16 @@ h1 {
 }
 
 button {
+  min-width: 10rem;
   font-family: inherit;
-
+  margin-top: 20px;
   padding: 10px 20px;
+  background-color: rgb(193, 129, 39);
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  box-shadow: 5px 9.9px 9.9px hsla(0, 3%, 47%, 0.35);
 }
 .circle.active {
   background-image: url(img/mosc--0.jpg);
@@ -78,17 +85,74 @@ button {
 .overlay-endGame {
   width: 100vw;
   height: 100vh;
-  background-color: rgb(19, 60, 41);
+  background-color: rgb(42, 61, 53, 0.7);
   position: fixed;
   top: 0;
   left: 0;
   display: none;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(10px);
+}
+.modal-endGame {
+  max-width: 50%;
+  min-height: 20%;
+  background-color: rgba(242, 193, 124);
+  line-height: 1.5;
+  padding: 20px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  box-shadow: 5px 9.9px 9.9px hsl(0deg 0% 0% / 0.5);
 }
 .overlay-endGame.visible {
   display: flex;
 }
+
+.overlay-rules {
+  width: 100vw;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(15px);
+}
+.rules-modal {
+  max-width: 50%;
+  min-height: 70%;
+  background-color: rgb(252, 252, 252);
+  line-height: 1.5;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 5px 9.9px 9.9px hsl(0deg 0% 0% / 0.5);
+  color: #444;
+  position: relative;
+}
+.mosc-prohibited {
+  /*  min-height: 20px; */
+  width: 25%;
+}
+.overlay-rules.hidden {
+  display: none;
+}
+#close {
+  position: absolute;
+  top: -1rem;
+  right: -2rem;
+  background: none;
+  box-shadow: none;
+  color: #444;
+}
+
 .overlay-blood {
   width: 100vw;
   height: 100vh;
@@ -102,20 +166,13 @@ button {
 .overlay-blood.open {
   display: block;
 }
-.rules-overlay {
+.overlay-main {
   width: 100vw;
   min-height: 50%;
   display: grid;
   grid-template-rows: 1fr 2fr;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
-}
-
-.modal-endGame {
-  max-width: 70%;
-  min-height: 300px;
-  background-color: rgb(121, 73, 7, 0.8);
-  line-height: 1.5;
 }
 
 .hidden {
@@ -136,10 +193,12 @@ button {
 .modal-btwRounds {
   min-width: 30%;
   min-height: 100px;
-  background-color: white;
+  background-color: rgb(242, 193, 124, 0.9);
   color: black;
-  line-height: 1.5;
+  line-height: 1.6;
   padding: 10px 20px;
+  border-radius: 15px;
+  box-shadow: 5px 9.9px 9.9px hsl(0deg 0% 0% / 0.5);
 }
 .overlay-btwRounds.visible {
   display: flex;
@@ -181,5 +240,21 @@ button {
   font-size: 2rem;
 }
 .score-el {
-  justify-self: end;
+  justify-self: center;
+}
+
+.speedbox {
+  justify-self: start;
+}
+.sound-el {
+  grid-column: 4;
+  grid-row: 2 / 3;
+  justify-self: start;
+  align-items: end;
+}
+.best-score {
+  color: rgb(221, 74, 16);
+}
+.round-between {
+  color: rgb(221, 74, 16);
 }

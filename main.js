@@ -1,6 +1,7 @@
 const startBtn = document.querySelector("#startBtn");
 const endBtn = document.querySelector("#endBtn");
 const backBtn = document.querySelector("#backBtn");
+const closeRulesBtn = document.querySelector("#close");
 
 const circles = document.querySelectorAll(".circle"); //querySelectorAll - created a NodeList like an array, so its index can be looped through
 const overlayEnd = document.querySelector(".overlay-endGame");
@@ -9,21 +10,27 @@ const modalEnd = document.querySelector(".modal-endGame");
 const overlayBtw = document.querySelector(".overlay-btwRounds");
 const modalBtw = document.querySelector(".modal-btwRounds");
 const overlayBlood = document.querySelector(".overlay-blood");
+const overlayRules = document.querySelector(".overlay-rules");
 
 const score = document.querySelector(".score");
-/* const roundMain = document.querySelector(".round-main"); */
+
 const roundBetween = document.querySelector(".round-between");
 const resultText = document.querySelector(".game-result-text");
 const bestScore = document.querySelector(".best-score");
 const livesImg = document.querySelector(".lives");
 const healthImg = document.querySelector(".health");
 const speed = document.querySelector(".speed");
-const rulesOverlay = document.querySelector(".rules-overlay");
+/* const overlayMain = document.querySelector(".overlay-main");
+ */ const soundOn = document.getElementById("sound-on");
+const soundOff = document.getElementById(".sound-off");
+
 let slapSound = new Audio("sound/slap.wav");
 slapSound.volume = 0.9;
 let noLuckSound = new Audio("sound/failureDrum.mp3");
 slapSound.volume = 0.1;
 let biteSound = new Audio("sound/bite.mp3");
+slapSound.volume = 0.1;
+let buzzingSound = new Audio("sound/flying.mp3");
 slapSound.volume = 0.1;
 
 let scoreValue = 0;
@@ -45,10 +52,12 @@ let mosquito = 0;
 /* function to generate a random num */
 const getRandomNum = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
+
 /* console.log(getRandomNum(0, 3)); */
 
 const stopGame = () => {
   if (lives !== 0) {
+    buzzingSound.pause();
     playing = false;
     overlayBtw.classList.toggle("visible");
     lives > 1
@@ -115,6 +124,7 @@ const clickCircle = (i) => {
     highestScore = scoreValue;
   }
   slapSound.play();
+  buzzingSound.pause();
 };
 /* i is an index for NodeList */
 circles.forEach((circle, i) => {
@@ -127,7 +137,11 @@ const enableCircle = () => {
 };
 const startGame = () => {
   if (playing) {
-    rulesOverlay.classList.remove("hidden");
+    if (buzzingSound.paused) {
+      buzzingSound.play();
+    }
+
+    /*     overlayMain.classList.remove("hidden"); */
     if (moves >= 3) {
       return endGame();
     }
@@ -173,18 +187,19 @@ const startGame = () => {
 
 const endGame = () => {
   if (playing) {
-    if (highestScore > 100) {
-      resultText.textContent = `You are a professional! Your best score is ${highestScore}. Now`;
-    } else if (highestScore > 50 && highestScore < 100) {
-      resultText.textContent = `Your best score is ${highestScore}. Good result!`;
-    } else if (highestScore > 10 && highestScore < 50) {
-      resultText.textContent = `Try again. Your score is ${highestScore}.`;
+    buzzingSound.pause();
+    if (highestScore >= 100) {
+      resultText.textContent = `Now you can sleep all night long 💤. Your best score is ${highestScore}. Now`;
+    } else if (highestScore >= 50 && highestScore < 100) {
+      resultText.textContent = `Now you can sleep some time 💤 quietly. Your best score is ${highestScore}.`;
+    } else if (highestScore >= 10 && highestScore < 50) {
+      resultText.textContent = `It not time to sleep! You will be disturbed by 🦟🦟🦟. Try again. Your best score is ${highestScore}.`;
     } else if (scoreValue === 0) {
-      resultText.textContent = `Try again. Your score is ${highestScore}.`;
+      noLuckSound.play();
+      resultText.textContent = `Try again or you will be bitten🩸. Your score is ${highestScore}.`;
     }
     overlayEnd.classList.toggle("visible");
     overlayEnd.addEventListener("click", resetGame);
-    noLuckSound.play();
 
     clearTimeout(timer);
     /* round.textContent = 3; */
@@ -210,6 +225,11 @@ const continueGame = () => {
   startGame();
 };
 
+const closeRules = () => {
+  overlayRules.classList.toggle("hidden");
+};
+
 startBtn.addEventListener("click", startGame);
 endBtn.addEventListener("click", endGame);
 backBtn.addEventListener("click", continueGame);
+closeRulesBtn.addEventListener("click", closeRules);
