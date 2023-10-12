@@ -79,7 +79,7 @@ function openOverlayBlood() {
 
 const hitBreak = () => {
   console.log(`this is hit ${hits}`);
-  healthImg.src = `/img/health--${hits}.png`;
+  healthImg.src = `img/health--${hits}.png`;
   playing = true;
 };
 
@@ -100,13 +100,13 @@ const clickCircle = (i) => {
       return hitBreak();
     } else if (hits === 3 && lives > 1) {
       openOverlayBlood();
-      healthImg.src = `/img/health--${hits}.png`;
+      healthImg.src = `img/health--${hits}.png`;
       lives--;
       console.log(`this are lives left ${lives}`);
       return timerForStop();
     } else if (hits === 3 && lives === 1) {
-      healthImg.src = `/img/health--${hits}.png`;
-      livesImg.src = `/img/hearts--${lives}.png`;
+      healthImg.src = `img/health--${hits}.png`;
+      livesImg.src = `img/hearts--${lives}.png`;
       return timerForEnd();
     }
   }
@@ -146,7 +146,7 @@ const startGame = () => {
       return endGame();
     }
 
-    livesImg.src = `/img/hearts--${lives}.png`;
+    livesImg.src = `img/hearts--${lives}.png`;
     startBtn.classList.add("hidden");
     endBtn.classList.remove("hidden");
 
@@ -218,7 +218,7 @@ const continueGame = () => {
   score.textContent = 0;
   scoreValue = 0;
   overlayBtw.classList.toggle("visible");
-  healthImg.src = `/img/health--0.png`;
+  healthImg.src = `img/health--0.png`;
 
   hits = 0;
 

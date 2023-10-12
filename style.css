@@ -32,7 +32,6 @@ h1 {
 .circle {
   width: 120px;
   height: 120px;
-  /* background-color: aqua; */
   border-radius: 50%;
   display: flex;
   justify-content: flex-start;
@@ -40,7 +39,6 @@ h1 {
   border-bottom: 1.5px solid white;
   box-shadow: 5px 9.9px 9.9px hsl(0deg 0% 0% / 0.35);
 
-  /* margin: 1rem; */
   /* to prevent clicking, before game starts */
   pointer-events: none;
 }
@@ -125,7 +123,7 @@ button {
 .rules-modal {
   max-width: 50%;
   min-height: 70%;
-  background-color: rgb(252, 252, 252);
+  background-color: #ffffff;
   line-height: 1.5;
   padding: 10px;
   display: flex;
@@ -163,7 +161,7 @@ button {
 .overlay-blood {
   width: 100vw;
   height: 100vh;
-  background-image: url(/img/blood-splatter.png);
+  background-image: url(img/blood-splatter.png);
   background-color: rgb(209, 15, 15, 0.3);
   position: fixed;
   top: 0;
