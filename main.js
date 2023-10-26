@@ -20,8 +20,7 @@ const bestScore = document.querySelector(".best-score");
 const livesImg = document.querySelector(".lives");
 const healthImg = document.querySelector(".health");
 const speed = document.querySelector(".speed");
-/* const overlayMain = document.querySelector(".overlay-main");
- */ const soundOn = document.getElementById("sound-on");
+const soundOn = document.getElementById("sound-on");
 const soundOff = document.getElementById(".sound-off");
 
 let slapSound = new Audio("sound/slap.wav");
@@ -48,12 +47,9 @@ let lives = 3;
 let timer2;
 let mosquito = 0;
 
-/* let clicked = false; */
 /* function to generate a random num */
 const getRandomNum = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
-
-/* console.log(getRandomNum(0, 3)); */
 
 const stopGame = () => {
   if (lives !== 0) {
@@ -112,7 +108,6 @@ const clickCircle = (i) => {
   }
   circles[active].classList.add("killed");
 
-  /*  console.log("circle is clicked", i); */
   /* score increases only after a right click */
   scoreValue += 10;
   moves--;
@@ -141,7 +136,6 @@ const startGame = () => {
       buzzingSound.play();
     }
 
-    /*     overlayMain.classList.remove("hidden"); */
     if (moves >= 3) {
       return endGame();
     }
@@ -171,8 +165,6 @@ const startGame = () => {
     speed.textContent = mosquito;
     moves++;
 
-    /* console.log(rounds); */
-
     function pickNewNum(active) {
       const newActive = getRandomNum(0, 3);
 
@@ -182,7 +174,6 @@ const startGame = () => {
       return pickNewNum(active);
     }
   }
-  /* console.log(active); */
 };
 
 const endGame = () => {
@@ -202,7 +193,6 @@ const endGame = () => {
     overlayEnd.addEventListener("click", resetGame);
 
     clearTimeout(timer);
-    /* round.textContent = 3; */
   }
 };
 
