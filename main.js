@@ -3,7 +3,8 @@ const endBtn = document.querySelector("#endBtn");
 const backBtn = document.querySelector("#backBtn");
 const closeRulesBtn = document.querySelector("#close");
 
-const circles = document.querySelectorAll(".circle"); //querySelectorAll - created a NodeList like an array, so its index can be looped through
+//querySelectorAll - created a NodeList like an array, so its index can be looped through
+const circles = document.querySelectorAll(".circle"); 
 const overlayEnd = document.querySelector(".overlay-endGame");
 const modalEnd = document.querySelector(".modal-endGame");
 
