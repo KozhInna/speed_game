@@ -14,6 +14,10 @@ JavaScript, HTML, CSS
 - Health points, life bar
 - Sound
 
-## Screenshots
+## Screenshot
 
-![Example screenshot](./img/Screenshot.png)
+## ![Example screenshot](./img/Screenshot.png)
+
+### **Check it out!**
+
+[Speedgame](https://snazzy-starlight-f5ac48.netlify.app/)
